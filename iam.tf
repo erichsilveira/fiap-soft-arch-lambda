@@ -20,7 +20,7 @@ POLICY
 
 resource "aws_iam_role_policy" "lambda_policy" {
   name = "lambda_policy"
-  role = "${aws_iam_role.lambda_apigateway_iam_role.id}"
+  role = aws_iam_role.lambda_apigateway_iam_role.id
 
   policy = <<POLICY
 {
@@ -59,7 +59,7 @@ POLICY
 }
 
 resource "aws_iam_policy" "function_logging_policy" {
-  name   = "function-logging-policy"
+  name = "function-logging-policy"
   policy = jsonencode({
     "Version" : "2012-10-17",
     "Statement" : [
@@ -76,6 +76,6 @@ resource "aws_iam_policy" "function_logging_policy" {
 }
 
 resource "aws_iam_role_policy_attachment" "function_logging_policy_attachment" {
-  role = aws_iam_role.lambda_apigateway_iam_role.id
+  role       = aws_iam_role.lambda_apigateway_iam_role.id
   policy_arn = aws_iam_policy.function_logging_policy.arn
 }
