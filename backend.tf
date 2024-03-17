@@ -2,7 +2,7 @@ terraform {
   backend "remote" {
     organization = "erichsilveira-org"
     workspaces {
-      name = "postech-fiap"
+      name = "postech-fiap-lambda"
     }
   }
 }
